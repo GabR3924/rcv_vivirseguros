@@ -125,7 +125,7 @@ fieldset button {
   
   .buttons button {
     padding: 10px 20px; /* Padding interno */
-    background-color: var(--color-secundario); /* Color de fondo */
+    background-color: var(--color-fondo); /* Color de fondo */
     color: #fff; /* Color del texto */
     border: none; /* Sin borde */
     border-radius: 5px; /* Bordes redondeados */
