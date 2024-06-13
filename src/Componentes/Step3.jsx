@@ -310,7 +310,7 @@ function Step3({
                     <button
                       className="modal-btn"
                       id="guardarPagoButton"
-                      style={{ background: "green" }}
+                      style={{ background: "green !important" }}
                       onClick={handleGuardarPago}
                     >
                       Guardar
