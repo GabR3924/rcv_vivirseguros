@@ -1,0 +1,34 @@
+CREATE TABLE tablaAsociativa (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    planPrecavido_id INT,
+    planPrudente_id INT,
+    planResponsable_id INT,
+    precioPlanPrecavido DECIMAL(10, 2),
+    precioPlanPrudente DECIMAL(10, 2),
+    precioPlanResponsable DECIMAL(10, 2),
+    FOREIGN KEY (planPrecavido_id) REFERENCES PlanPrecavido(id),
+    FOREIGN KEY (planPrudente_id) REFERENCES PlanPrudente(id),
+    FOREIGN KEY (planResponsable_id) REFERENCES PlanResponsable(id)
+);
+
+
+// tablas para los planes
+CREATE TABLE planResponsable (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    titulo VARCHAR(255),
+    precio DECIMAL(10, 2),
+    cobertura VARCHAR(255),
+    suma_asegurada DECIMAL(10, 2)
+);
+
+
+//tabla select
+CREATE TABLE OtraTabla (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(255),
+    precio DECIMAL(10, 2)
+);
+
+//tasa_dia
+
+
