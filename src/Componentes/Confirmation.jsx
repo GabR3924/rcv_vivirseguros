@@ -1,6 +1,6 @@
 import "../CSS/Confirmation.css";
 import axios from "axios";
-import IMG from "../assets/logo1.png";
+import IMG from "../assets/figlogo.png";
 import { FaWhatsapp } from "react-icons/fa";
 import { BiLogoGmail } from "react-icons/bi";
 import { FaPhoneAlt } from "react-icons/fa";
