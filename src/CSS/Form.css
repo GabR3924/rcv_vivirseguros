@@ -1,0 +1,138 @@
+@import './base.css';
+
+form{
+  contain: content;
+}
+/* Estilos generales para fieldsets */
+fieldset {
+  width: 80%; /* Se ajusta al 80% del ancho del contenedor padre */
+  max-width: 400px; /* Máximo ancho para evitar que el fieldset sea demasiado grande en pantallas grandes */
+  border: 2px solid #ccc; /* Borde del fieldset */
+  border-radius: 8px; /* Bordes redondeados */
+  padding: 20px; /* Espacio interno */
+  margin: 20px auto; 
+  /* Margen automático superior e inferior y centrado horizontalmente */
+}
+  
+fieldset button {
+    background-color: #4CAF50; /* Color de fondo */
+    color: white; /* Color del texto */
+    padding: 10px 20px; /* Espacio interno */
+    border: none; /* Sin borde */
+    border-radius: 5px; /* Bordes redondeados */
+    cursor: pointer; /* Cursor de puntero al pasar sobre el botón */
+  }
+  
+  fieldset button:hover {
+    background-color: #45a049; /* Cambiar color de fondo al pasar el ratón */
+  }
+  
+  
+  /* Estilos generales para inputs */
+  input[type="text"],
+  input[type="date"],
+  select {
+    width: 100%; /* Ancho completo */
+    padding: 10px; /* Espacio interno */
+    margin-bottom: 10px; /* Espacio inferior */
+    border: 1px solid #ccc; /* Borde */
+    border-radius: 5px; /* Bordes redondeados */
+    box-sizing: border-box; /* Tamaño de la caja */
+  }
+  
+  /* Estilos para inputs dentro de contenedores */
+  .container-select,
+  .container-input {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+
+  }
+  
+  .container-select select,
+  .container-input input {
+    width: 48%; 
+    gap: 10px;
+  }
+
+
+  /* Estilos adicionales según sea necesario */
+  
+
+
+#progressbar {
+    margin: 60px;
+    overflow: hidden;
+    counter-reset: step;
+  }
+  
+  #progressbar li {
+    list-style-type: none;
+    float: left;
+    width: 33%;
+    position: relative;
+    text-align: center;
+  }
+  
+  #progressbar li:before {
+    content: counter(step);
+    counter-increment: step;
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    border: 2px solid #ddd;
+    display: block;
+    text-align: center;
+    margin: 0 auto 10px auto;
+    border-radius: 50%;
+    background-color: #fff;
+  }
+  
+  #progressbar li:after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background-color: #ddd;
+    top: 15px;
+    left: -50%;
+    z-index: -1;
+  }
+  
+  #progressbar li:first-child:after {
+    content: none;
+  }
+  
+  #progressbar li.active {
+    color: green;
+  }
+  
+  #progressbar li.active:before {
+    border-color: green;
+  }
+  
+  #progressbar li.active + li:after {
+    background-color: green;
+  }
+  
+  /* Estilos para los botones */
+.buttons {
+    display: flex;
+    justify-content: center; /* Espacio entre los botones */
+    margin: 20px auto; 
+    gap: 20px;
+  }
+  
+  .buttons button {
+    padding: 10px 20px; /* Padding interno */
+    background-color: var(--color-secundario); /* Color de fondo */
+    color: #fff; /* Color del texto */
+    border: none; /* Sin borde */
+    border-radius: 5px; /* Bordes redondeados */
+    cursor: pointer; /* Cursor al pasar sobre el botón */
+  }
+  
+  .buttons button:hover {
+    background-color: var(--color-secundario); /* Color de fondo al pasar sobre el botón */
+  }
+  

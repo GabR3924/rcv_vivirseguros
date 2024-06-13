@@ -1,0 +1,53 @@
+@import './base.css';
+
+#hero {
+    position: relative; /* Añade posición relativa para que los pseudo-elementos se posicionen correctamente */
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.hero-txt {
+    color: white;
+    font-size: 30px;
+    position: relative; /* Asegura que el texto esté por encima del pseudo-elemento */
+    z-index: 1; /* Asegura que el texto esté por encima del pseudo-elemento */
+}
+
+/* .btn-hero {
+    background: var(--color-secundario);
+    height: 50px;
+    width: 15%;
+    margin: 3%;
+    color: white;
+    font-weight: bolder;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    position: absolute; 
+    z-index: 1; 
+} */
+
+@media (max-width: 768px) {
+    #hero {
+        align-items: center;
+        justify-content: center;
+    }
+
+    .logo img {
+        width: 100%;
+    }
+
+    .hero-txt h2 {
+        font-size: 30px;         
+    }
+
+    /* .btn-hero {
+        width: 50%;
+        margin: 5% 0; 
+    } */
+}

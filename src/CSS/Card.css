@@ -1,0 +1,55 @@
+#card{
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    border: 2px solid var(--color-secundario);
+    width: 100%;
+    height: 100%;
+    padding: 26px;
+    border-top-left-radius: 3rem;
+    border-bottom-right-radius: 3rem;
+   
+}
+
+#card:hover {
+    border: 2px solid red;
+    box-shadow: 0 0 20px rgba(95, 95, 95, 0.32); /* Agrega sombra al hacer hover */
+
+}
+
+#card h2{
+    font-size: 20px;
+    font-weight: normal;
+}
+
+#card h1{
+    font-size: 30px;
+    font-weight: lighter;
+}
+
+#card ul {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    padding: 5px;
+    list-style: none;
+    font-size: 20px;
+}
+
+#card .icon{
+    color: green;
+    font-size: 1rem;
+    margin-right: 5px;
+}
+
+.card-btn{
+    background: var(--color-secundario);
+    height: 40px;
+    width: 100%;
+    color: white;
+    font-weight: bolder;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+
+}

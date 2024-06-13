@@ -1,0 +1,97 @@
+#plans {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    padding: 3rem;
+}
+
+.titulo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+}
+
+.total-price{
+    width: 50%;
+    align-items: center;
+    text-align: center;
+    color: grey;
+    font-size: 19px;
+}
+
+.titulo h1 {
+    color: var(--color-secundario);
+      font-size: 40px;
+      font-weight: normal;
+  }
+  
+  .titulo h3 {
+    color: gray;
+      font-size: 25px;
+      font-weight: normal;
+  }
+
+.services{
+    display: flex;
+    flex-direction: row;
+    margin-top: 20px;
+}
+
+.service:hover{
+    background:rgb(210, 210, 210);
+}
+
+.service{
+    display: flex;
+    color: gray;
+    font-size: 15px;
+    width: 200px;
+    font-weight: normal;
+    margin: 1rem;
+    padding: 10px; 
+    padding-left: 30px; 
+    padding-right: 30px; 
+    background-color:var(--color-primario); 
+    border-radius: 10px; 
+    box-shadow: 1px 2px 2px 1px var(--color-secundario); 
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    cursor: pointer;
+}
+
+.selected {
+    background-color: rgb(220, 220, 220); /* Cambia el color de fondo cuando el botón está seleccionado */
+}
+
+.service .icon{
+    color:var(--color-secundario) !important;
+}
+  
+
+
+.cards {
+    width: 90%;
+    height: 100%;
+    gap: 2rem;
+    padding: 3%;
+    display: grid;
+    grid-template-columns: repeat(3, .5fr); /* Cambiado a una sola columna para dispositivos móviles */
+}
+
+@media (max-width: 768px) {
+    .total-price{
+        width: 100%;
+    }
+    .service{
+        width: 100%;
+    }
+    .cards {
+        width: 100%;
+        gap: 1rem;
+        grid-template-columns: repeat(1, 1fr);
+    }
+}

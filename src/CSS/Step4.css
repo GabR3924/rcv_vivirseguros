@@ -1,0 +1,86 @@
+.btns{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center; /* Espacio entre los botones */
+    margin: 20px auto; 
+    
+}
+
+  
+  .btns button {
+    width: 150px; /* Ancho fijo para los botones */
+    margin-right: 10px; /* Margen derecho entre botones */
+    padding: 10px; /* Padding interno para los botones */
+    font-size: 16px; /* Tamaño de fuente */
+    background-color: var(--color-primario);/* Color de fondo */
+    color: white; /* Color del texto */
+    border: none; /* Elimina el borde */
+    border-radius: 5px; /* Radio de borde */
+    cursor: pointer; /* Cambia el cursor al pasar el mouse */
+    transition: background-color 0.3s; /* Transición suave del color de fondo */
+  }
+  
+  .btns button:hover {
+    background-color:  #a44501; /* Color de fondo al pasar sobre el botón */
+  }
+
+  .modal-content {
+    display: flex;
+    position: absolute;
+    flex-direction: column;
+  background-color: #fff;
+  /* Color de fondo del modal */
+  /* Ajuste de posición vertical */
+  margin-left: auto;
+  margin-right: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  contain: content;
+  width: 100%;
+  gap: 1rem;
+  border-radius: 10px;
+  /* Radio de borde */
+  position: relative;
+  transition: margin-top 0.5s ease-out;
+  /* Transición de desplazamiento */
+  overflow-y: auto;
+  /* Agregamos un scroll vertical */
+}
+
+.modal-button {
+  width: 150px;
+  background: #e7e7e7;
+  font-weight: bold;
+  color: rgb(32, 32, 32);
+  border: 0 none;
+  border-radius: 1px;
+  cursor: pointer;
+  padding: 10px;
+  margin: 10px 5px;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+button .close{
+  position: absolute;
+  cursor: pointer;
+  background:none;
+  font-weight: bold;
+  color: rgb(255, 255, 255);
+  border-radius: 1px;
+  cursor: pointer;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+input{
+  width: 100%; /* Ancho completo */
+    padding: 10px; /* Espacio interno */
+    margin-bottom: 10px; /* Espacio inferior */
+    border: 1px solid #ccc; /* Borde */
+    border-radius: 5px; /* Bordes redondeados */
+    box-sizing: border-box;
+}
+
+

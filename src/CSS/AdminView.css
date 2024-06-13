@@ -1,0 +1,106 @@
+.admin-dashboard {
+  font-family: Arial, sans-serif;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.content {
+  padding: 20px;
+}
+
+h1 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+h2 {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.tiendas {
+  margin-bottom: 30px;
+}
+
+input[type="text"] {
+  padding: 8px;
+  margin-bottom: 10px;
+  width: 70%;
+}
+
+button {
+  padding: 8px 16px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.tienda-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #ddd;
+  padding: 10px 0;
+
+}
+
+.iconAdmin {
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+.edit-tienda input[type="text"] {
+  margin-bottom: 0;
+}
+
+.view-tienda {
+  display: flex;
+  align-items: center;
+}
+
+.view-tienda span{
+  margin-left: 20px;
+}
+
+.view-tienda img{
+  margin-left: 20px;
+  width: 50px;
+}
+
+.usuario {
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.fecha {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.info-adicional {
+  margin-top: 10px;
+}
+
+button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  margin-bottom: 5px;
+}
+
+button:hover {
+  background-color: #0056b3;
+}

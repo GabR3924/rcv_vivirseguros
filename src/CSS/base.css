@@ -1,0 +1,20 @@
+/* variables.css */
+
+/* Colores */
+:root {
+    --color-primario: white;
+    --color-secundario:  #344570;
+    --color-fondo: #182850;
+    --color-txt: #182850;
+    --color-fondo2: white;
+    --color-txt2: white;
+  }
+  
+  /* Tipografía */
+  :root {
+    --fuente-principal: 'Arial', sans-serif;
+    --titulo: 1.5rem;
+    --texto: 1rem;
+  }
+  
+  

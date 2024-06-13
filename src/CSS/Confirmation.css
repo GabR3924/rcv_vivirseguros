@@ -1,0 +1,53 @@
+ .confirmation{
+    text-align: center;
+    margin: 3rem;
+    gap: 2rem;
+}
+
+.confirmation .contacto{
+    margin: auto;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    width: 100%;
+}
+
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th, td {
+    border: 1px solid #ccc;
+    padding: 5px;
+    text-align: left;
+}
+
+th {
+    background-color: #f0f0f0;
+}
+
+ .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 10px;
+    margin-top: 2rem;
+}
+
+.grid-item {
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.table-header {
+    font-weight: bold;
+    text-align: center;
+}
+
+ .table-data {
+    text-align: left;
+}
+.rcv img{
+    width: 5rem;
+}  
