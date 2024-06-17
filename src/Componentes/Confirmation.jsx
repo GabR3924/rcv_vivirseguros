@@ -252,12 +252,16 @@ const Confirmation = ({
             <tr>
               <td className="table-data" colspan="2">
                 <FaWhatsapp />
+                04242335368
+
               </td>
               <td className="table-data" colspan="2">
                 <BiLogoGmail />
+                lifesolution@gocastgroup.com
               </td>
               <td className="table-data" colspan="2">
                 <FaPhoneAlt />
+                0212720532
               </td>
             </tr>
           </tbody>
