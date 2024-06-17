@@ -11,7 +11,7 @@ const Footer = () => {
     {
       title: "Contacto",
       data: [
-        " (58212) 212.4800 / 4900",
+        " (58212) 43123535 / 2454",
       ],
     },
     {
@@ -34,7 +34,7 @@ const Footer = () => {
             <img src={figlogo} alt="logo" />
           </div>
           <Link to="/login" style={{ color: "black", textDecoration:"none" }}>
-            Vivir Seguros
+            GoCast Group
           </Link>
           <ul>
             {socialLink.map((link, index) => (
@@ -59,7 +59,7 @@ const Footer = () => {
       </div>
       <div className="lower">
         <span>&copy; Copyright 2024</span>
-        <span>vivir seguros 2024</span>
+        <span>GoCast Group 2024</span>
         <span>&Designe; By <a href="https://gocastgroup.com" target="blank">Grupo GoCast</a> Soluciones, C.A 2024</span>
       </div>
     </footer>

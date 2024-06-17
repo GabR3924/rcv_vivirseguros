@@ -29,7 +29,7 @@ const Form = ({ codigo, nombre }) => {
     ciudad: "",
     municipio: "",
     direccion: "",
-    documentImage: null 
+    imagen: null 
   });
 
   const [datos2, setDatos2] = useState({
@@ -50,6 +50,8 @@ const Form = ({ codigo, nombre }) => {
       ...datos,
       [e.target.name]: e.target.value,
     });
+
+    console.log("Estado datos actualizado:", datos);
   };
 
   
@@ -67,6 +69,7 @@ const Form = ({ codigo, nombre }) => {
       imagen:data.image
     });
   
+    console.log("Estado datos2 actualizado:", datos2);
   };
 
   const handlePaymentData = (data) => {
@@ -124,7 +127,7 @@ const Form = ({ codigo, nombre }) => {
       return;
     }
 
-    console.log("Datos enviados:", datos, datos2);
+    console.log("Datos enviados:", datos, datos2, codigo);
     setStep(3);
   };
 

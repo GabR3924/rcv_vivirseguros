@@ -10,27 +10,17 @@ import { useEffect } from "react";
 const Confirmation = ({
   datos,
   datos2,
+  codigo,
   paymentData,
-  establishment,
   plan,
   extraPlan,
 }) => {
-  console.log(" establecimiento confirmado:", establishment);
-  console.log(" planes confirmado:", plan, extraPlan);
-
-  useEffect(() => {
-    // Este efecto se ejecutará cada vez que editableData cambie
-    console.log(" Data2:", datos2);
-
-    const marca = datos2 ? datos2.marca : null;
-  }, [datos2]);
 
   useEffect(() => {
     const sendEmail = async () => {
       try {
-        const response = await axios.post('https://vivirseguros.gocastgroup.com:3100/sendEmail', {
+        const response = await axios.post('http://localhost:4000/sendEmail', {
           datos_correo: datos.correo,
-          // Otros datos que necesites enviar al servidor para el correo
         });
         console.log('Correo electrónico enviado correctamente:', response.data);
       } catch (error) {
@@ -41,66 +31,9 @@ const Confirmation = ({
     sendEmail();
   }, [datos.correo]);
 
-  // const postData = async () => {
-  //   try {
-  //     // Console.log para mostrar la información que se va a enviar
-  //     console.log("Datos a enviar:", {
-  //       plan: plan,
-  //       extraPlan: extraPlan,
-  //       datos_nombre: datos.nombre,
-  //       datos_apellido: datos.apellido,
-  //       datos_fnacimiento: datos.fnacimiento,
-  //       datos_requestTypeCode: datos.requestTypeCode,
-  //       confirmacion_datos: "Confirmacion",
-  //       datos_cedula: datos.cedula,
-  //       datos_telefono: datos.telefono,
-  //       datos_correo: datos.correo,
-  //       paymentData_referencia: paymentData.referencia,
-  //       paymentData_monto: paymentData.monto,
-  //       paymentData_banco: paymentData.banco,
-  //       establishment_nombre: establishment,
-  //       serial: datos2.serial,
-  //       placa: datos2.placa,
-  //       marca: datos2.marca,
-  //       modelo: datos2.modelo,
-  //       ano: datos2.año,
-  //       tipo: datos2.tipo,
-  //       estilo: datos2.estilo,
-  //       imagen_cedula:datos.documentImage,
-  //       imagen_carnet:datos2.imagen
-  //     });
-
-  //     const response = await axios.post(
-  //       "https://vivirseguros.gocastgroup.com:3100/insertarDatos",
-  //       {
-  //         datos_nombre: datos.nombre,
-  //         datos_apellido: datos.apellido,
-  //         datos_fnacimiento: datos.fnacimiento,
-  //         datos_requestTypeCode: datos.requestTypeCode,
-  //         datos_cedula: datos.cedula,
-  //         datos_telefono: datos.telefono,
-  //         datos_correo: datos.correo,
-  //         paymentData_referencia: paymentData.referencia,
-  //         paymentData_monto: paymentData.monto,
-  //         paymentData_banco: paymentData.banco,
-  //         establishment_nombre: establishment.nombre,
-  //         serial: datos2.serial,
-  //         placa: datos2.placa,
-  //         marca: datos2.marca,
-  //         modelo: datos2.modelo,
-  //         ano: datos2.año,
-  //         tipo: datos2.tipo,
-  //         estilo: datos2.estilo,
-  //         imagen_cedula:datos.imagen,
-  //         imagen_carnet:datos2.imagen
-  //       }
-  //     );
-
-  //     console.log("Datos insertados correctamente:", response);
-  //   } catch (error) {
-  //     console.error("Error al insertar datos:", error);
-  //   }
-  // };
+  useEffect(() => {
+    console.log('paymentData:', paymentData);
+  }, [paymentData]);
 
   const postData = async () => {
     try {
@@ -108,58 +41,66 @@ const Confirmation = ({
       const formData = new FormData();
       
       // Agregar los datos al FormData
-      formData.append('datos_nombre', datos.nombre);
-      formData.append('datos_apellido', datos.apellido);
-      formData.append('datos_fnacimiento', datos.fnacimiento);
-      formData.append('datos_requestTypeCode', datos.requestTypeCode);
-      formData.append('datos_cedula', datos.cedula);
-      formData.append('datos_telefono', datos.telefono);
-      formData.append('datos_correo', datos.correo);
+      formData.append('establecimiento', codigo);
+      formData.append('cedula_propietario', datos.cedula);
+      formData.append('nombre_propietario', datos.nombre);
+      formData.append('apellido_propietario', datos.apellido);
+      formData.append('fecha_nacimiento', datos.fnacimiento);
+      formData.append('genero', datos.genero);
+      formData.append('estado_civil', datos.estadoCivil);
+      formData.append('telefono', datos.telefono);
+      formData.append('correo', datos.correo);
+      formData.append('ciudad', datos.ciudad);
+      formData.append('estado', datos.estado);
+      formData.append('municipio', datos.municipio);
+      formData.append('direccion', datos.direccion);
+      formData.append('imagen_cedula', datos.imagen);
+      formData.append('marca_vehiculo', datos2.marca);
+      formData.append('serial_vehiculo', datos2.serial);
+      formData.append('placa_vehiculo', datos2.placa);
+      formData.append('año_vehiculo', datos2.año);
+      formData.append('imagen_vehiculo', datos2.imagen); 
       formData.append('paymentData_referencia', paymentData.referencia);
       formData.append('paymentData_monto', paymentData.monto);
       formData.append('paymentData_banco', paymentData.banco);
-      formData.append('establishment_nombre', establishment.nombre);
-      formData.append('serial', datos2.serial);
-      formData.append('placa', datos2.placa);
-      formData.append('marca', datos2.marca);
-      formData.append('modelo', datos2.modelo);
-      formData.append('ano', datos2.año);
-      formData.append('tipo', datos2.tipo);
-      formData.append('estilo', datos2.estilo);
-      
-      // Agregar las imágenes al FormData
-      formData.append('imagen_cedula', datos.imagen);  // Suponiendo que datos.imagen es un objeto File
-      formData.append('imagen_carnet', datos2.imagen); // Suponiendo que datos2.imagen es un objeto File
+      formData.append('plans', plan);
+      formData.append('extra_plans', extraPlan);
   
-      const response = await axios.post(
-        "https://vivirseguros.gocastgroup.com:3100/insertarDatos",
-        formData,
-        {
-          headers: {
-            'Content-Type': 'multipart/form-data'
-          }
+      console.log('Datos antes de inserción:');
+      formData.forEach((value, key) => {
+        console.log(`${key}: ${value}`);
+      });
+        // URL de tu servidor Express dnde está la ruta /insertarDatos
+      const url = 'https://vivirseguros.gocastgroup.com:3100/insertarDatos';
+  
+      // Enviar la solicitud POST con Axios
+      const response = await axios.post(url, formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data'
         }
-      );
+      });
   
-      console.log("Datos insertados correctamente:", response.data);
+      console.log('Datos insertados correctamente:', response.data);
     } catch (error) {
-      console.error("Error al insertar datos:", error);
+      console.error('Error al insertar datos:', error);
     }
   };
   
 
+
   useEffect(() => {
     // Llama a la función postData con los datos que deseas enviar
-    postData({ datos, datos2 })
+    postData({ datos, datos2, codigo,plan,extraPlan, paymentData })
       .then((data) => {
-        console.log("Datos insertados correctamente:", data);
+        console.log( datos, datos2, codigo,plan,extraPlan, paymentData)
+        console.log("Datos insertados correctamente:",  datos, datos2, codigo,plan,extraPlan, paymentData);
       })
       .catch((error) => {
+        console.log( datos, datos2, codigo,plan,extraPlan, paymentData)
         console.error("Error al insertar datos:", error);
       });
   }, [datos, datos2]);
 
-  console.log("confirmacion datos 2", datos2);
   return (
     <div className="confirmation">
       <p style={{ fontWeight: "bold" }}>
@@ -167,7 +108,7 @@ const Confirmation = ({
         pago para su póliza de R.C.V. Ahora cuenta con cobertura. Recibirá el
         comprobante de pago a su correo electrónico de inmediato.
         <h3 style={{ textAlign: "center" }}>
-          Formulario para {establishment.nombre}
+          Formulario para {codigo}
         </h3>
       </p>
       <div className="rcv">
@@ -311,27 +252,21 @@ const Confirmation = ({
             <tr>
               <td className="table-data" colspan="2">
                 <FaWhatsapp />
-                +58412-3210083
               </td>
               <td className="table-data" colspan="2">
                 <BiLogoGmail />
-                cisscavirtual@vivirseguros.web.ve
               </td>
               <td className="table-data" colspan="2">
                 <FaPhoneAlt />
-                +58212-2124800
               </td>
             </tr>
           </tbody>
         </table>
       </div>
       <FaLocationDot />
-      <p>
-        Av. Venezuela cruce con Alameda, Torre Vivir Seguros, Urb. El Rosal,
-        Chacao, Venezuela
-      </p>
+     
       <br />
-      <img src={IMG} alt="" />
+      {/* <img src={IMG} alt="" /> */}
       <p>
         Le agradecemos su confianza por habernos seleccionado como su Compañía
         de Seguros, donde estamos para servirle…
