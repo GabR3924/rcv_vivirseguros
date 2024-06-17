@@ -18,6 +18,24 @@ const AdminView = () => {
     categoria: "",
   });
 
+  const obtenerTiendas = () => {
+    axios
+      .get("https://vivirseguros.gocastgroup.com:3100/tiendas")
+      .then((response) => {
+        if (response.data) {
+          console.log("qr:", response.data.qr);
+          setTiendas(response.data);
+        } else {
+          console.error(
+            "La respuesta del servidor no contiene los datos esperados."
+          );
+        }
+      })
+      .catch((error) => {
+        console.error("Error al obtener las tiendas:", error);
+      });
+  };
+
   useEffect(() => {
     // Llamada Axios para obtener las tiendas
 
@@ -41,13 +59,36 @@ const AdminView = () => {
     axios
       .get("https://vivirseguros.gocastgroup.com:3100/obtenerDatos")
       .then((response) => {
+        
         console.log("usuario", response);
         setUsuarios(response.data);
       })
       .catch((error) => {
         console.error("Error al obtener los usuarios:", error);
       });
-  }, []); // La llamada se realiza solo una vez al montar el componente
+  }, []); 
+
+  const handleCreateTienda = () => {
+    axios
+      .post(
+        "https://vivirseguros.gocastgroup.com:3100/agregar-intermediario",
+        nuevaTienda
+      )
+      .then((response) => {
+        console.log("Tienda creada correctamente");
+         obtenerTiendas();
+        setTiendas([...tiendas, response.data]);
+        // Reiniciar el formulario de nueva tienda
+        setNuevaTienda({
+          nombre: "",
+          codigo: "",
+          categoria: "",
+        });
+      })
+      .catch((error) => {
+        console.error("Error al crear la tienda:", error);
+      });
+  };
 
   // Función para manejar la eliminación de una tienda
   const handleDeleteTienda = (id) => {
@@ -91,29 +132,6 @@ const AdminView = () => {
         tienda.id === id ? { ...tienda, nombre } : tienda
       )
     );
-  };
-
-  // Función para manejar la creación de una nueva tienda
-  const handleCreateTienda = () => {
-    axios
-      .post(
-        "https://vivirseguros.gocastgroup.com:3100/agregar-intermediario",
-        nuevaTienda
-      )
-      .then((response) => {
-        console.log("Tienda creada correctamente");
-        // Volver a obtener la lista de tiendas después de la creación
-        setTiendas([...tiendas, response.data]);
-        // Reiniciar el formulario de nueva tienda
-        setNuevaTienda({
-          nombre: "",
-          codigo: "",
-          categoria: "",
-        });
-      })
-      .catch((error) => {
-        console.error("Error al crear la tienda:", error);
-      });
   };
 
   const handleToggleInfo = (id) => {
