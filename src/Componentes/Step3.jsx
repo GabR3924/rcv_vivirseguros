@@ -197,6 +197,7 @@ function Step3({
             type="button"
             className="modal-button"
             onClick={() => setShowPagoMovilModal(true)}
+            style={{ background: "green !important" }}
           >
             Pago Móvil
           </button>
@@ -325,6 +326,7 @@ function Step3({
             type="button"
             className="modal-button"
             onClick={() => setShowTajetaModal(true)}
+            style={{ background: "green !important" }}
           >
             Tarjeta
           </button>
