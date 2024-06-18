@@ -19,7 +19,7 @@ const Confirmation = ({
   useEffect(() => {
     const sendEmail = async () => {
       try {
-        const response = await axios.post('http://localhost:4000/sendEmail', {
+        const response = await axios.post('https://vivirseguros.gocastgroup.com:3100/sendEmail', {
           datos_correo: datos.correo,
         });
         console.log('Correo electrónico enviado correctamente:', response.data);
