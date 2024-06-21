@@ -21,7 +21,10 @@ const About = () => {
         transition={{ duration: 0.5 }}
       >
         <h2>¿Quienes Somos?</h2>
-        <p>Una empresa que nace con el objetivo de brindar bienestar a todos nuestros intermediarios, clientes y aliados. A través de la propuesta “Cuida lo tuyo”, nos orientamos a una promesa de valor enfocada en ofrecer productos y servicios flexibles e innovadores, adaptados a las dinámicas del entorno, abordando los negocios desde una perspectiva abierta y cercana en línea con las nuevas exigencias del negocio asegurador.</p>
+        <p>Somos un grupo profesionales de asistencia y consultoría que actúa como canal e intermediario entre el proveedor y el usuario.
+
+
+Contamos con un equipo de trabajo innovador y comprometido, que a través de la tecnología (una aplicación online), ayuda a solucionar las necesidades y cumplir las expectativas de los usuarios.</p>
         <motion.button 
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.9 }}

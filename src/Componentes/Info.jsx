@@ -9,42 +9,43 @@ import { MdVideoCall } from "react-icons/md";
 const Info = () => {
   const infoCards = [
     {
-      title: "Cobertura de R.C.V",
-      img: <FaCar />, // Asigna la imagen importada aquí
-      data:
-        "Ampara los daños que pueda ocasionar el vehículo asegurado a terceros como consecuencia de un accidente de tránsito donde el asegurado es responsable del accidente, vistos como Daños a Personas y como Daños a Cosas las cuales cada una de ellas tiene una suma asegurada definida y limitada, dependiendo del tipo y uso del vehículo asegurado.",
+        title: "Cobertura de Responsabilidad Civil Vehicular",
+        img: <FaCar />, 
+        data:
+            "Cubre los daños a terceros causados por el vehículo asegurado en un accidente de tránsito donde el asegurado es responsable. Incluye daños a personas y a cosas, con límites definidos según el tipo y uso del vehículo.",
     },
     {
-      title: "Cobertura de Exceso de Límite",
-      img: <IoIosPeople />,
-      data:
-        "Ampara en exceso de las coberturas de R.C.V. y que se hace muy importante pues dependiendo de la suma asegurada el asegurado estará mejor amparado.",
+        title: "Cobertura de Exceso de Límite",
+        img: <IoIosPeople />,
+        data:
+            "Proporciona cobertura adicional a la de Responsabilidad Civil Vehicular, ofreciendo mayor protección según la suma asegurada.",
     },
     {
-      title: "Cobertura de Defensa Penal",
-      img: <GiHealing />,
-      data:
-        "Cubre los gastos que se puedan incurrir por la detención del conductor y/o del vehículo asegurado a consecuencia de un accidente de tránsito, hasta el límite de la suma asegurada.",
+        title: "Cobertura de Defensa Penal",
+        img: <GiHealing />,
+        data:
+            "Cubre los gastos legales derivados de la detención del conductor y/o del vehículo asegurado tras un accidente de tránsito, hasta el límite asegurado.",
     },
     {
-      title: "Cobertura de Accidentes Para Ocupantes del Vehículo Asegurado",
-      img: <FaHandHoldingMedical />,
-      data:
-        "Define una suma asegurada para Muerte Accidental, una para Invalidez Permanente y una para Gastos Médicos por cada uno de los ocupantes del vehículo asegurado que resulte afectado por un accidente de tránsito.",
+        title: "Cobertura de Accidentes para Ocupantes del Vehículo",
+        img: <FaHandHoldingMedical />,
+        data:
+            "Establece sumas aseguradas para muerte accidental, invalidez permanente y gastos médicos para cada ocupante del vehículo asegurado en caso de accidente de tránsito.",
     },
     {
-      title: "Telemedicina",
-      img: <MdVideoCall />,
-      data:
-        "Ofrece al asegurado o dueño del vehículo la posibilidad de consultar a un médico las 24 horas del día mediante llamada telefónica o video llamada.",
+        title: "Telemedicina",
+        img: <MdVideoCall />,
+        data:
+            "Permite al asegurado o propietario del vehículo consultar a un médico las 24 horas del día mediante llamada telefónica o videollamada.",
     },
     {
-      title: "Asistencia en Viajes",
-      img: <GiTowTruck />,
-      data:
-        "Ofrece 3 servicios de Grúa, uno de hasta 100 Kms y dos de hasta 45 Kms, que le permite resolver un imprevisto por avería o accidente y trasladar el vehículo hasta un sitio a buen resguardo, para Particulares, Rústicos y Pick Ups de hasta 20 años de antigüedad.",
+        title: "Asistencia en Viajes",
+        img: <GiTowTruck />,
+        data:
+            "Ofrece tres servicios de grúa: uno de hasta 100 km y dos de hasta 45 km, para resolver imprevistos por avería o accidente y trasladar el vehículo a un lugar seguro. Válido para vehículos particulares, rústicos y pick-ups de hasta 20 años de antigüedad.",
     },
-  ];
+];
+
   
 
   return (
