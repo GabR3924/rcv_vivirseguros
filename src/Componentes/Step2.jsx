@@ -17,7 +17,7 @@ function Step2({ handleStep2Data }) {
     formData.append('image', selectedImage);
 
     try {
-      const response = await axios.post('https://vivirseguros.gocastgroup.com:3100/procesar-imagen', formData, {
+      const response = await axios.post('https://rcv.gocastgroup.com:3100/procesar-imagen', formData, {
         headers: {
           'Content-Type': 'multipart/form-data'
         }

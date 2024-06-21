@@ -11,7 +11,6 @@ import Footer from './Componentes/Footer';
 import Confirmation from './Componentes/Confirmation';
 import Modal from './Modal';
 import Login from './Componentes/Login';
-import AdminDashboard from './Componentes/AdminView';
 
 function App() {
   const [establishment, setEstablishment] = useState(null);
@@ -42,7 +41,6 @@ function App() {
           <Route path="/formulario/:establecimiento" element={<Form codigo={establishment?.codigo} nombre={establishment?.nombre} />} />
           <Route path="/formulario/confirmacion" element={<Confirmation />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/adminview" element={<AdminDashboard />} />
           {/* Redirige a la página principal si la ruta no coincide */}
           <Route path="*" element={<Navigate to="/" />} />
         </Routes>
