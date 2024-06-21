@@ -64,7 +64,7 @@ const Plans = ({ establishment }) => {
       <div className="titulo">
         <h1>Nuestros Planes</h1>
       </div>
-      <h3>Cuida Lo Tuyo</h3>
+
 
       <div className="services">
         {btnService.map((svc, index) => (

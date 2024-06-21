@@ -57,7 +57,7 @@ const Info = () => {
         
       >
         <h1>Qué Incluyen</h1>
-        <h3>Cuida Lo Tuyo</h3>
+      
       </div>
 
       <div className="custom-info-cards-container">
