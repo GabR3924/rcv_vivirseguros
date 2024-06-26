@@ -19,7 +19,7 @@ const Confirmation = ({
   useEffect(() => {
     const sendEmail = async () => {
       try {
-        const response = await axios.post('https://vivirseguros.gocastgroup.com:3100/sendEmail', {
+        const response = await axios.post('https://rcv.gocastgroup.com:3100/sendEmail', {
           datos_correo: datos.correo,
         });
         console.log('Correo electrónico enviado correctamente:', response.data);
@@ -71,7 +71,7 @@ const Confirmation = ({
         console.log(`${key}: ${value}`);
       });
         // URL de tu servidor Express dnde está la ruta /insertarDatos
-      const url = 'https://vivirseguros.gocastgroup.com:3100/insertarDatos';
+      const url = 'https://rcv.gocastgroup.com:3100/insertarDatos';
   
       // Enviar la solicitud POST con Axios
       const response = await axios.post(url, formData, {
