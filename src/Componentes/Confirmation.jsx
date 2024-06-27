@@ -41,7 +41,7 @@ const Confirmation = ({
       const formData = new FormData();
       
       // Agregar los datos al FormData
-      formData.append('establecimiento', codigo);
+      formData.append('codigo', codigo);
       formData.append('cedula_propietario', datos.cedula);
       formData.append('nombre_propietario', datos.nombre);
       formData.append('apellido_propietario', datos.apellido);
