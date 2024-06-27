@@ -195,7 +195,7 @@ const Form = ({ codigo, nombre }) => {
      datos={datos}
      datos2={datos2}
      paymentData={paymentData}
-     establishment={codigo}
+     codigo={codigo}
      plan={planName} // Pasar el nombre del plan
      extraPlan={extraServiceName} // Pasar el nombre del servicio extra
    />
