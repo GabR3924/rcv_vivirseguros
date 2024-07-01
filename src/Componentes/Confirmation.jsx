@@ -17,21 +17,6 @@ const Confirmation = ({
 }) => {
 
   useEffect(() => {
-    const sendEmail = async () => {
-      try {
-        const response = await axios.post('https://rcv.gocastgroup.com:3100/sendEmail', {
-          data: datos.correo,
-        });
-        console.log('Correo electrónico enviado correctamente:', response.data);
-      } catch (error) {
-        console.error('Error al enviar el correo electrónico:', error);
-      }
-    };
-
-    sendEmail();
-  }, [datos.correo]);
-
-  useEffect(() => {
     console.log('paymentData:', paymentData);
   }, [paymentData]);
 
