@@ -20,7 +20,7 @@ const Confirmation = ({
     const sendEmail = async () => {
       try {
         const response = await axios.post('https://rcv.gocastgroup.com:3100/sendEmail', {
-          datos_correo: datos.correo,
+          data: datos.correo,
         });
         console.log('Correo electrónico enviado correctamente:', response.data);
       } catch (error) {
