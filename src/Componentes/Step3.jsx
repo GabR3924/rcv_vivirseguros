@@ -35,15 +35,15 @@ function Step3({
   const [fechExp, setFechExp] = useState("");
   const [tipTarjeta, setTipTarjeta] = useState("");
   const [identificador, setIdentificador] = useState("");
-  const [monto, setMonto] = useState(totalBolivares);
-
+  
   const totalAmount = parseFloat(planPrice) + parseFloat(extraServicePrice);
   const totalBolivares = precioBolivares * totalAmount;
+  const [monto, setMonto] = useState(totalBolivares);
 
   useEffect(() => {
     setMonto(totalBolivares);
   }, [totalBolivares]);
-  
+
   const handleGuardarPago = () => {
     console.log("correo", correo);
     console.log("banco", selectedBanco);
