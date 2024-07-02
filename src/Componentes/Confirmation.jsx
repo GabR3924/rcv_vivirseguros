@@ -86,6 +86,30 @@ const Confirmation = ({
       });
   }, [datos, datos2]);
 
+  const calcularVigencia = () => {
+    // Obtener la fecha actual
+    const fechaActual = new Date();
+  
+    // Formatear la fecha actual
+    const diaActual = String(fechaActual.getDate()).padStart(2, '0');
+    const mesActual = String(fechaActual.getMonth() + 1).padStart(2, '0'); // Los meses comienzan desde 0
+    const anioActual = fechaActual.getFullYear();
+  
+    // Calcular la fecha un año después
+    const fechaUnAnioDespues = new Date(fechaActual);
+    fechaUnAnioDespues.setFullYear(fechaUnAnioDespues.getFullYear() + 1);
+  
+    // Formatear la fecha un año después
+    const diaDespues = String(fechaUnAnioDespues.getDate()).padStart(2, '0');
+    const mesDespues = String(fechaUnAnioDespues.getMonth() + 1).padStart(2, '0');
+    const anioDespues = fechaUnAnioDespues.getFullYear();
+  
+    return `${diaActual}/${mesActual}/${anioActual} al ${diaDespues}/${mesDespues}/${anioDespues}`;
+  };
+  
+  const vigencia = calcularVigencia();
+
+
   return (
     <div className="confirmation">
       <p style={{ fontWeight: "bold" }}>
@@ -127,7 +151,6 @@ const Confirmation = ({
 
               <tbody>
                 <tr>
-                  6{" "}
                   <td className="table-data" colspan="2">
                     {extraPlan}
                   </td>
@@ -161,7 +184,7 @@ const Confirmation = ({
               <tbody>
                 <tr>
                   <td className="table-data" colspan="2">
-                    Vigencia 17/04/2024 al 17/04/2025
+                    Vigencia {vigencia}
                   </td>
                   <td className="table-data" colspan="2">
                     {datos.correo}

@@ -19,7 +19,6 @@ function Step3({
   const [tarjetaResponse, setTarjetaResponse] = useState(null);
 
   //estados pago movil
-  const [monto, setMonto] = useState("");
   const [cedula, setCedula] = useState("");
   const [telefono, setTelefono] = useState("");
   const [referencia, setReferencia] = useState("");
@@ -36,10 +35,15 @@ function Step3({
   const [fechExp, setFechExp] = useState("");
   const [tipTarjeta, setTipTarjeta] = useState("");
   const [identificador, setIdentificador] = useState("");
+  const [monto, setMonto] = useState(totalBolivares);
 
   const totalAmount = parseFloat(planPrice) + parseFloat(extraServicePrice);
   const totalBolivares = precioBolivares * totalAmount;
 
+  useEffect(() => {
+    setMonto(totalBolivares);
+  }, [totalBolivares]);
+  
   const handleGuardarPago = () => {
     console.log("correo", correo);
     console.log("banco", selectedBanco);
@@ -259,24 +263,14 @@ function Step3({
                         <option value="0191">Banco Nacional de Crédito, C.A. Banco Universal</option>
                       </select>
 
-                      {/* Agregar campo de email */}
-                      <label htmlFor="correo">Correo:</label>
-                      <br />
-                      <input
-                        type="email"
-                        id="correo"
-                        name="correo"
-                        onChange={(e) => setCorreo(e.target.value)}
-                      />
-
                       <label htmlFor="monto">Monto:</label>
                       <br />
                       <input
                         type="number"
                         id="monto"
                         name="monto"
-                        step="0.01"
-                        onChange={(e) => setMonto(e.target.value)}
+                        // 
+                        readOnly
                       />
 
                       <label htmlFor="cedula">Cédula:</label>
