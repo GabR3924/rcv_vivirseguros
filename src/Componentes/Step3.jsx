@@ -269,6 +269,7 @@ function Step3({
                         type="number"
                         id="monto"
                         name="monto"
+                        value={totalBolivares}
                         // 
                         readOnly
                       />
