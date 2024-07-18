@@ -263,6 +263,7 @@ function Step3({
                         <option value="0191">Banco Nacional de Crédito, C.A. Banco Universal</option>
                       </select>
 
+                    <p color="red">El Monto debe ser exacto</p>
                       <label htmlFor="monto">Monto:</label>
                       <br />
                       <input
@@ -282,6 +283,7 @@ function Step3({
                         name="cedula"
                         onChange={(e) => setCedula(e.target.value)}
                       />
+                    <p >EJ: 58412025893</p>
 
                       <label htmlFor="telefono">Teléfono:</label>
                       <br />

@@ -7,14 +7,19 @@
     
 }
 
+p{
+  color: red;
+  font-size: 15px;
+}
+
   
   .btns button {
     width: 150px; /* Ancho fijo para los botones */
     margin-right: 10px; /* Margen derecho entre botones */
     padding: 10px; /* Padding interno para los botones */
     font-size: 16px; /* Tamaño de fuente */
-    background-color: var(--color-primario);/* Color de fondo */
-    color: white; /* Color del texto */
+    background-color: var(--color-fondo);/* Color de fondo */
+    color: rgb(255, 255, 255); /* Color del texto */
     border: none; /* Elimina el borde */
     border-radius: 5px; /* Radio de borde */
     cursor: pointer; /* Cambia el cursor al pasar el mouse */
@@ -22,7 +27,7 @@
   }
   
   .btns button:hover {
-    background-color:  #a44501; /* Color de fondo al pasar sobre el botón */
+    background-color: green; /* Color de fondo al pasar sobre el botón */
   }
 
   .modal-content {
