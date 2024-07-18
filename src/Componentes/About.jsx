@@ -20,7 +20,7 @@ const About = () => {
         exit={{ opacity: 0, x: -50 }}
         transition={{ duration: 0.5 }}
       >
-        <h2>¿Quienes Somos?</h2>
+        <h2>¿Quienes Somos??</h2>
         <p>Somos un grupo profesionales de asistencia y consultoría que actúa como canal e intermediario entre el proveedor y el usuario.
 
 
