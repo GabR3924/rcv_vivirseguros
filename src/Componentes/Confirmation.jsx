@@ -145,7 +145,7 @@ const Confirmation = ({
         ¡Felicidades! Ha finalizado exitosamente la carga de información y el
         pago para su póliza de R.C.V. Ahora cuenta con cobertura. Recibirá el
         comprobante de pago a su correo electrónico de inmediato.
-        <h3 style={{ textAlign: "center" }}>Formulario para {establishment.nombre}</h3>
+        <h3 style={{ textAlign: "center" }}>Formulario para {establishment}</h3>
       </p>
       <div className="rcv">
         <div className="grid">
