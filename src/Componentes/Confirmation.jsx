@@ -314,7 +314,7 @@ const Confirmation = ({
       </p>
       <div className="buttons">
         <button onClick={() => (window.location.href = "/")}>Ir al inicio</button>
-        <button onClick={downloadPDF}>Descargar recibo</button>
+        <button onClick={downloadPDF}>Descargar  recibo</button>
       </div>
     </div>
   );
