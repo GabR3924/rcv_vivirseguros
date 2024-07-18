@@ -14,6 +14,7 @@
     "aws-sdk": "^2.1605.0",
     "axios": "^1.6.8",
     "framer-motion": "^11.0.12",
+    "jspdf": "^2.5.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-icons": "^5.0.1",
