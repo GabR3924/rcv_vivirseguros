@@ -2,12 +2,12 @@
 
 /* Colores */
 :root {
-    --color-primario: white;
-    --color-secundario:  #344570;
-    --color-fondo: #182850;
-    --color-txt: #182850;
+  --color-primario: #FF7E20;
+  --color-secundario: #452A59;
+  --color-fondo: #f2f2f2;
+  --color-txt: #182850;
     --color-fondo2: white;
-    --color-txt2: white;
+    --color-txt2: #FF7E20;
   }
   
   /* Tipografía */
