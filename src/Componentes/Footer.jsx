@@ -1,5 +1,5 @@
 import "../CSS/Footer.css";
-import figlogo from "../assets/figlogo2.png";
+import figlogo from "../assets/logo.png";
 import { BsFacebook, BsTwitter, BsInstagram } from "react-icons/bs";
 import { FaTiktok } from "react-icons/fa";
 import { Link } from "react-router-dom";
