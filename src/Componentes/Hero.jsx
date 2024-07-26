@@ -20,6 +20,7 @@ const Hero = () => {
         exit={{ scale: 0 }}
         transition={{ duration: 1 }}
       >
+        <img src={logo} alt="" />
         </motion.div>
       <motion.div 
         className="hero-txt"
