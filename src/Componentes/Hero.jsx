@@ -31,13 +31,6 @@ const Hero = () => {
       >
         <h2>RCV</h2>
       </motion.div>
-      {/* <motion.button 
-        className="btn-hero"
-        whileHover={{ scale: 1.1 }}
-        whileTap={{ scale: 0.9 }}
-      >
-      <a href="#info" style={{ color: 'white', textDecoration: 'none' }}> Mas Información</a>
-      </motion.button> */}
     </motion.div>
   );
 }
