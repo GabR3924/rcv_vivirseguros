@@ -15,7 +15,7 @@ function Step2({ handleStep2Data }) {
     setIsLoading(true);
     const formData = new FormData();
     formData.append('image', selectedImage);
-
+//prueba
     try {
       const response = await axios.post('https://rcv.gocastgroup.com:3100/procesar-imagen', formData, {
         headers: {

@@ -86,6 +86,30 @@ const Confirmation = ({
     }
   };
 
+  
+  const calcularVigencia = () => {
+    // Obtener la fecha actual
+    const fechaActual = new Date();
+  
+    // Formatear la fecha actual
+    const diaActual = String(fechaActual.getDate()).padStart(2, '0');
+    const mesActual = String(fechaActual.getMonth() + 1).padStart(2, '0'); // Los meses comienzan desde 0
+    const anioActual = fechaActual.getFullYear();
+  
+    // Calcular la fecha un año después
+    const fechaUnAnioDespues = new Date(fechaActual);
+    fechaUnAnioDespues.setFullYear(fechaUnAnioDespues.getFullYear() + 1);
+  
+    // Formatear la fecha un año después
+    const diaDespues = String(fechaUnAnioDespues.getDate()).padStart(2, '0');
+    const mesDespues = String(fechaUnAnioDespues.getMonth() + 1).padStart(2, '0');
+    const anioDespues = fechaUnAnioDespues.getFullYear();
+  
+    return `${diaActual}/${mesActual}/${anioActual} al ${diaDespues}/${mesDespues}/${anioDespues}`;
+  };
+  
+  const vigencia = calcularVigencia();
+
   useEffect(() => {
     // Llama a la función postData con los datos que deseas enviar
     postData({ datos, datos2 })
@@ -114,28 +138,6 @@ const Confirmation = ({
     doc.save("confirmacion.pdf");
   };
 
-  const calcularVigencia = () => {
-    // Obtener la fecha actual
-    const fechaActual = new Date();
-  
-    // Formatear la fecha actual
-    const diaActual = String(fechaActual.getDate()).padStart(2, '0');
-    const mesActual = String(fechaActual.getMonth() + 1).padStart(2, '0'); // Los meses comienzan desde 0
-    const anioActual = fechaActual.getFullYear();
-  
-    // Calcular la fecha un año después
-    const fechaUnAnioDespues = new Date(fechaActual);
-    fechaUnAnioDespues.setFullYear(fechaUnAnioDespues.getFullYear() + 1);
-  
-    // Formatear la fecha un año después
-    const diaDespues = String(fechaUnAnioDespues.getDate()).padStart(2, '0');
-    const mesDespues = String(fechaUnAnioDespues.getMonth() + 1).padStart(2, '0');
-    const anioDespues = fechaUnAnioDespues.getFullYear();
-  
-    return `${diaActual}/${mesActual}/${anioActual} al ${diaDespues}/${mesDespues}/${anioDespues}`;
-  };
-  
-  const vigencia = calcularVigencia();
 
   console.log("confirmacion datos 2", datos2);
 
