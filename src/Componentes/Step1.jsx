@@ -1,17 +1,7 @@
 import React from "react";
 
-const Step1 = ({ datos, handleChange }) => {
+const Step1 = ({ datos, handleChange,handleImageCedulaChange }) => {
 
-  const handleImageCedulaChange = (e) => {
-    const file = e.target.files[0];
-    if (file) { 
-      setDatos((prevDatos) => {
-        const newDatos = { ...prevDatos, imagen_cedula: file };
-        console.log("Actualizando imagen de cédula:", newDatos);
-        return newDatos;
-      });
-    }
-  };
 
   return (
     <div>

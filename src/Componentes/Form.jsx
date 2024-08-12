@@ -35,7 +35,6 @@ const Form = ({ codigo, nombre }) => {
   const [datos2, setDatos2] = useState({
     cedula: "",
     serial: "",
-    nombre: "",
     placa: "",
     marca: "",
     año: "",
@@ -46,14 +45,24 @@ const Form = ({ codigo, nombre }) => {
 
  
   const handleChange = (e) => {
-    setDatos({
-      ...datos,
-      [e.target.name]: e.target.value,
+    const { name, value } = e.target;
+    setDatos((prevDatos) => {
+      const newDatos = { ...prevDatos, [name]: value };
+      console.log("Actualizando datos personales:", newDatos);
+      return newDatos;
     });
-
-    console.log("Estado datos actualizado:", datos);
   };
 
+  const handleImageCedulaChange = (e) => {
+    const file = e.target.files[0];
+    if (file) { 
+      setDatos((prevDatos) => {
+        const newDatos = { ...prevDatos, imagen_cedula: file };
+        console.log("Actualizando imagen de cédula:", newDatos);
+        return newDatos;
+      });
+    }
+  };
   
 
   const handleStep2Data = (data) => {
@@ -175,7 +184,7 @@ const Form = ({ codigo, nombre }) => {
       )}
 
       {/* Renderizar el componente correspondiente al paso actual */}
-      {step === 1 && <Step1 datos={datos} handleChange={handleChange} />}
+      {step === 1 && <Step1 datos={datos} handleChange={handleChange} handleImageCedulaChange={handleImageCedulaChange} />}
       {step === 2 && (
         <Step2 handleStep2Data={handleStep2Data} />
       )}

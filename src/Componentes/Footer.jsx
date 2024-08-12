@@ -10,9 +10,7 @@ const Footer = () => {
   const links = [
     {
       title: "Contacto",
-      data: [
-        " (58212) 43123535 / 2454",
-      ],
+      data: [" (58212) 43123535 / 2454"],
     },
     {
       title: "Productos",
@@ -33,9 +31,13 @@ const Footer = () => {
           <div className="brand">
             <img src={figlogo} alt="logo" />
           </div>
-          <Link to="/login" style={{ color: "black", textDecoration:"none" }}>
-            GoCast Group
-          </Link>
+          <a
+            href="https://backoffice-vivirseguros.vercel.app"
+            style={{ color: "black", textDecoration: "none" }}
+          >
+            Vivir Seguros Group
+          </a>
+
           <ul>
             {socialLink.map((link, index) => (
               <li key={index}>{link}</li>
@@ -60,7 +62,13 @@ const Footer = () => {
       <div className="lower">
         <span>&copy; Copyright 2024</span>
         <span>GoCast Group 2024</span>
-        <span>&Designe; By <a href="https://gocastgroup.com" target="blank">Grupo GoCast</a> Soluciones, C.A 2024</span>
+        <span>
+          &Designe; By{" "}
+          <a href="https://gocastgroup.com" target="blank">
+            Grupo GoCast
+          </a>{" "}
+          Soluciones, C.A 2024
+        </span>
       </div>
     </footer>
   );
