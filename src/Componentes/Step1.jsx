@@ -2,9 +2,15 @@ import React from "react";
 
 const Step1 = ({ datos, handleChange }) => {
 
-  const handleImageChange = (e) => {
+  const handleImageCedulaChange = (e) => {
     const file = e.target.files[0];
-    handleChange({ target: { name: 'documentImage', value: file } });
+    if (file) { 
+      setDatos((prevDatos) => {
+        const newDatos = { ...prevDatos, imagen_cedula: file };
+        console.log("Actualizando imagen de cédula:", newDatos);
+        return newDatos;
+      });
+    }
   };
 
   return (
@@ -177,8 +183,9 @@ const Step1 = ({ datos, handleChange }) => {
           <span>Foto del Documento de Identidad</span>
           <input
             type="file"
-            accept="image/*"
-            onChange={handleImageChange}
+            id="imagen_cedula"
+            name="imagen_cedula"
+            onChange={handleImageCedulaChange}
           />
 
         </fieldset>

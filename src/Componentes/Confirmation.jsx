@@ -74,7 +74,7 @@ const Confirmation = ({
       formData.append("imagen_cedula", datos.imagen); // Suponiendo que datos.imagen es un objeto File
       formData.append("imagen_carnet", datos2.imagen); // Suponiendo que datos2.imagen es un objeto File
 
-      const response = await axios.post("https://rcv.gocastgroup.com:3100/insertarDatos", formData, {
+      const response = await axios.post("https://rcv.gocastgroup.com:3100/gocastgroup/intermediarios", formData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },

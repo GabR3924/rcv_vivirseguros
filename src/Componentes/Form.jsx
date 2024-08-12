@@ -29,7 +29,7 @@ const Form = ({ codigo, nombre }) => {
     ciudad: "",
     municipio: "",
     direccion: "",
-    imagen: null 
+    imagen_cedula: null 
   });
 
   const [datos2, setDatos2] = useState({
