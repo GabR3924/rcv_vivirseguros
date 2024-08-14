@@ -1,15 +1,12 @@
 import axios from 'axios';
 import React, { useState } from 'react';
 
-function Step2({ handleStep2Data }) {
+function Step2({ handleStep2Data, handleImageChange, selectedImage }) {
   const [isLoading, setIsLoading] = useState(false);
-  const [selectedImage, setSelectedImage] = useState(null);
   const [vehicleInfo, setVehicleInfo] = useState(null);
   const [modalIsOpen, setModalIsOpen] = useState(false);
 
-  const handleImageChange = (event) => {
-    setSelectedImage(event.target.files[0]);
-  };
+
 
   const handleProcessImage = async () => {
     setIsLoading(true);

@@ -13,12 +13,14 @@ const Confirmation = ({
   datos,
   datos2,
   paymentData,
-  establishment,
+  codigo,
   plan,
   extraPlan,
+  selectedCedulaImg,
+  selectedImage
 }) => {
-  console.log(" establecimiento confirmado:", establishment);
-  console.log(" planes confirmado:", plan, extraPlan);
+  console.log(" cedula:", selectedCedulaImg);
+  console.log(" imagen ocr:", selectedImage);
 
   const tableRef = useRef();
 
@@ -29,21 +31,21 @@ const Confirmation = ({
     const marca = datos2 ? datos2.marca : null;
   }, [datos2]);
 
-  useEffect(() => {
-    const sendEmail = async () => {
-      try {
-        const response = await axios.post("https://rcv.gocastgroup.com:3100/sendEmail", {
-          datos_correo: datos.correo,
-          // Otros datos que necesites enviar al servidor para el correo
-        });
-        console.log("Correo electrónico enviado correctamente:", response.data);
-      } catch (error) {
-        console.error("Error al enviar el correo electrónico:", error);
-      }
-    };
+  // useEffect(() => {
+  //   const sendEmail = async () => {
+  //     try {
+  //       const response = await axios.post("https://rcv.gocastgroup.com:3100/sendEmail", {
+  //         datos_correo: datos.correo,
+  //         // Otros datos que necesites enviar al servidor para el correo
+  //       });
+  //       console.log("Correo electrónico enviado correctamente:", response.data);
+  //     } catch (error) {
+  //       console.error("Error al enviar el correo electrónico:", error);
+  //     }
+  //   };
 
-    sendEmail();
-  }, [datos.correo]);
+  //   sendEmail();
+  // }, [datos.correo]);
 
   const postData = async () => {
     try {
@@ -61,7 +63,7 @@ const Confirmation = ({
       formData.append("paymentData_referencia", paymentData.referencia);
       formData.append("paymentData_monto", paymentData.monto);
       formData.append("paymentData_banco", paymentData.banco);
-      formData.append("establishment_nombre", establishment.nombre);
+      formData.append("codigo", codigo);
       formData.append("serial", datos2.serial);
       formData.append("placa", datos2.placa);
       formData.append("marca", datos2.marca);
@@ -71,13 +73,13 @@ const Confirmation = ({
       formData.append("estilo", datos2.estilo);
 
       // Agregar las imágenes al FormData
-      formData.append("imagen_cedula", datos.imagen); // Suponiendo que datos.imagen es un objeto File
-      formData.append("imagen_carnet", datos2.imagen); // Suponiendo que datos2.imagen es un objeto File
-
-      const response = await axios.post("https://rcv.gocastgroup.com:3100/vivirseguros/intermediarios", formData, {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
+      formData.append("imagen_cedula", selectedCedulaImg);
+      formData.append("imagen", selectedImage);
+      
+      const response = await axios.post("https://rcv.gocastgroup.com:2053/vivirseguros/intermediarios", formData, {
+          headers: {
+            'Content-Type': 'multipart/form-data'
+          }
       });
 
       console.log("Datos insertados correctamente:", response.data);
@@ -147,7 +149,7 @@ const Confirmation = ({
         ¡Felicidades! Ha finalizado exitosamente la carga de información y el
         pago para su póliza de R.C.V. Ahora cuenta con cobertura. Recibirá el
         comprobante de pago a su correo electrónico de inmediato.
-        <h3 style={{ textAlign: "center" }}>Formulario para {establishment}</h3>
+        <h3 style={{ textAlign: "center" }}>Formulario para {codigo}</h3>
       </p>
       <div className="rcv">
         <div className="grid">

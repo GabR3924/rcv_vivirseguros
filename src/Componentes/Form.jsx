@@ -15,6 +15,9 @@ const Form = ({ codigo, nombre }) => {
   const [extraServiceName, setExtraServiceName] = useState("");
   const [formSubmitted, setFormSubmitted] = useState(false);
   const [paymentData, setPaymentData] = useState(null); 
+  const [selectedCedulaImg, setSelectedCedulaImg] = useState(null);
+  const [selectedImage, setSelectedImage] = useState(null);
+
   const [datos, setDatos] = useState({
     requestTypeCode: "V",
     cedula: "",
@@ -43,30 +46,35 @@ const Form = ({ codigo, nombre }) => {
     imageOcr: null
   });
 
+    const handleImageChange = (event) => {
+    setSelectedImage(event.target.files[0]);
+  };
+
+  const handleImageCedulaChange = (event) => {
+    setSelectedCedulaImg(event.target.files[0]);
+  };
+
  
   const handleChange = (e) => {
     const { name, value } = e.target;
     setDatos((prevDatos) => {
       const newDatos = { ...prevDatos, [name]: value };
-      console.log("Actualizando datos personales:", newDatos);
       return newDatos;
     });
   };
 
-  const handleImageCedulaChange = (e) => {
-    const file = e.target.files[0];
-    if (file) { 
-      setDatos((prevDatos) => {
-        const newDatos = { ...prevDatos, imagen_cedula: file };
-        console.log("Actualizando imagen de cédula:", newDatos);
-        return newDatos;
-      });
-    }
-  };
+  // const handleImageCedulaChange = (e) => {
+  //   const file = e.target.files[0];
+  //   if (file) { 
+  //     setDatos((prevDatos) => {
+  //       const newDatos = { ...prevDatos, imagen_cedula: file };
+  //       return newDatos;
+  //     });
+  //   }
+  // };
   
 
   const handleStep2Data = (data) => {
-    console.log("imagen",data.image)
   
     setDatos2({
       cedula:data.vehicleData.cedula,
@@ -77,9 +85,7 @@ const Form = ({ codigo, nombre }) => {
       año:data.vehicleData.año,
       imagen:data.image
     });
-  
-    console.log("Estado datos2 actualizado:", datos2);
-  };
+    };
 
   const handlePaymentData = (data) => {
     setPaymentData(data);
@@ -186,7 +192,7 @@ const Form = ({ codigo, nombre }) => {
       {/* Renderizar el componente correspondiente al paso actual */}
       {step === 1 && <Step1 datos={datos} handleChange={handleChange} handleImageCedulaChange={handleImageCedulaChange} />}
       {step === 2 && (
-        <Step2 handleStep2Data={handleStep2Data} />
+        <Step2 handleStep2Data={handleStep2Data} handleImageChange={handleImageChange} selectedImage={selectedImage} />
       )}
 
       {step === 3 && codigo && (
@@ -205,8 +211,10 @@ const Form = ({ codigo, nombre }) => {
      datos2={datos2}
      paymentData={paymentData}
      codigo={codigo}
-     plan={planName} // Pasar el nombre del plan
-     extraPlan={extraServiceName} // Pasar el nombre del servicio extra
+     plan={planName} 
+     extraPlan={extraServiceName} 
+     selectedCedulaImg={selectedCedulaImg} 
+     selectedImage={selectedImage} 
    />
      }
 
