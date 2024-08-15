@@ -53,22 +53,31 @@ const Confirmation = ({
       const formData = new FormData();
 
       // Agregar los datos al FormData
-      formData.append("datos_nombre", datos.nombre);
-      formData.append("datos_apellido", datos.apellido);
-      formData.append("datos_fnacimiento", datos.fnacimiento);
-      formData.append("datos_requestTypeCode", datos.requestTypeCode);
-      formData.append("datos_cedula", datos.cedula);
-      formData.append("datos_telefono", datos.telefono);
-      formData.append("datos_correo", datos.correo);
+      formData.append("codigo", codigo);
+      formData.append("cedula_propietario", datos.cedula);
+      formData.append("nombre_propietario", datos.nombre);
+      formData.append("apellido_propietario", datos.apellido);
+      formData.append("fecha_nacimiento", datos.fnacimiento);
+      formData.append("genero", datos.genero);
+      formData.append("telefono", datos.telefono);
+      formData.append("correo", datos.correo);
+      formData.append("ciudad", datos.ciudad);
+      formData.append("estado", datos.estado);
+      formData.append("municipio", datos.municipio);
+      formData.append("direccion", datos.direccion);
+      formData.append("plans", plan);
+      formData.append("extra_plans", extraPlan);
+      
       formData.append("paymentData_referencia", paymentData.referencia);
       formData.append("paymentData_monto", paymentData.monto);
       formData.append("paymentData_banco", paymentData.banco);
-      formData.append("codigo", codigo);
-      formData.append("serial", datos2.serial);
-      formData.append("placa", datos2.placa);
-      formData.append("marca", datos2.marca);
+     
+      formData.append("serial_vehiculo", datos2.serial);
+      formData.append("placa_vehiculo", datos2.placa);
+      formData.append("marca_vehiculo", datos2.marca);
+      formData.append("ano_vehiculo", datos2.año);
+      
       formData.append("modelo", datos2.modelo);
-      formData.append("ano", datos2.año);
       formData.append("tipo", datos2.tipo);
       formData.append("estilo", datos2.estilo);
 
@@ -80,7 +89,7 @@ const Confirmation = ({
           headers: {
             'Content-Type': 'multipart/form-data'
           }
-      });
+      }); 
 
       console.log("Datos insertados correctamente:", response.data);
     } catch (error) {
@@ -125,21 +134,68 @@ const Confirmation = ({
 
   const downloadPDF = () => {
     const doc = new jsPDF();
+  
+    // Título del documento
     doc.text("Confirmación de Información y Pago de Póliza", 10, 10);
-
-    // Usar autoTable para generar la tabla
+  
+    // Información del propietario
     doc.autoTable({
-      html: tableRef.current,
-      startY: 30,
+      head: [['Propietario']],
+      body: [
+        [`Nombre: ${datos.nombre} ${datos.apellido}`],
+        [`Cédula: ${datos.cedula}`],
+        [`Fecha de nacimiento: ${datos.fnacimiento}`],
+        [`Teléfono: ${datos.telefono}`],
+        [`Correo: ${datos.correo}`],
+      ],
+      startY: 20, // Espaciado entre el título y la tabla
       theme: 'striped',
-      headStyles: { fillColor: [22, 160, 133] }, // Color de fondo de los encabezados
-      styles: { fontSize: 10, cellPadding: 3 }, // Tamaño de fuente y relleno de celda
-      margin: { top: 20, bottom: 20 }, // Márgenes superior e inferior
+      headStyles: { fillColor: [22, 160, 133] },
+      styles: { fontSize: 10, cellPadding: 3, overflow: 'linebreak' },
     });
-
+  
+    // Información del vehículo
+    doc.autoTable({
+      head: [['Vehículo']],
+      body: [
+        [`Serial: ${datos2.serial}`],
+        [`Placa: ${datos2.placa}`],
+        [`Marca: ${datos2.marca}`],
+        [`Modelo: ${datos2.modelo}`],
+        [`Año: ${datos2.año}`],
+        [`Tipo: ${datos2.tipo}`],
+        [`Estilo: ${datos2.estilo}`],
+      ],
+      startY: doc.autoTable.previous.finalY + 10, // Iniciar la tabla después de la anterior
+      theme: 'striped',
+      headStyles: { fillColor: [22, 160, 133] },
+      styles: { fontSize: 10, cellPadding: 3, overflow: 'linebreak' },
+    });
+  
+    // Información del pago
+    doc.autoTable({
+      head: [['Pago']],
+      body: [
+        [`Referencia: ${paymentData.referencia}`],
+        [`Monto: ${paymentData.monto} Bs`],
+        [`Banco: ${paymentData.banco}`],
+        [`Fecha de Pago: ${paymentData.fecha}`],
+      ],
+      startY: doc.autoTable.previous.finalY + 10, // Iniciar la tabla después de la anterior
+      theme: 'striped',
+      headStyles: { fillColor: [22, 160, 133] },
+      styles: { fontSize: 10, cellPadding: 3, overflow: 'linebreak' },
+    });
+  
+    // Guardar el PDF
     doc.save("confirmacion.pdf");
   };
+  
 
+  const handleDownloadPDF = (e) => {
+    e.preventDefault();  // Previene cualquier comportamiento no deseado como la redirección
+    downloadPDF();       // Llama a la función para descargar el PDF
+  };
 
   console.log("confirmacion datos 2", datos2);
 
@@ -317,9 +373,14 @@ const Confirmation = ({
         de Seguros, donde estamos para servirle…
       </p>
       <div className="buttons">
-        <button onClick={() => (window.location.href = "/")}>Ir al inicio</button>
-        <button onClick={downloadPDF}>Descargar  recibo</button>
-      </div>
+  <button type="button" onClick={() => (window.location.href = "/")}>
+    Ir al inicio
+  </button>
+  <button type="button" onClick={(e) => handleDownloadPDF(e)}>
+    Descargar recibo
+  </button>
+</div>
+
     </div>
   );
 };
