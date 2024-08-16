@@ -105,7 +105,7 @@ const Form = ({ codigo, nombre }) => {
       alert("Por favor, complete todos los campos antes de continuar.");
     } else {
       // Si todos los campos están llenos, avanza al Step2
-      setStep(2);
+      setStep(3);
     }
   };
 
