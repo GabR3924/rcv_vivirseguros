@@ -58,6 +58,7 @@ const Form = ({ codigo, nombre }) => {
     const { name, value } = e.target;
     setDatos((prevDatos) => {
       const newDatos = { ...prevDatos, [name]: value };
+      console.log(newDatos);
       return newDatos;
     });
   };
@@ -86,7 +87,6 @@ const Form = ({ codigo, nombre }) => {
   const goToNextStep = () => {
     // Verifica si todos los campos requeridos en datos están llenos
     const isStep1Complete =
-      datos.requestTypeCode &&
       datos.cedula &&
       datos.nombre &&
       datos.apellido &&
@@ -113,7 +113,6 @@ const Form = ({ codigo, nombre }) => {
     e.preventDefault();
 
     const requiredFields = [
-      datos.requestTypeCode,
       datos.cedula,
       datos.nombre,
       datos.apellido,
@@ -132,7 +131,7 @@ const Form = ({ codigo, nombre }) => {
       return;
     }
 
-    setStep(3);
+    setStep(2);
   };
 
   // Función para obtener los parámetros de consulta de la URL
