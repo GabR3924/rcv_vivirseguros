@@ -11,8 +11,8 @@ const Step1 = ({ datos, handleChange,handleImageCedulaChange }) => {
           <h3 className="fs-subtitle">Todos los campos son obligatorios</h3>
           <br />
 
-          {/* <div className="container-select">
-            <select
+          <div className="container-select">
+            {/* <select
               className="form-select mb-3"
               name="requestTypeCode"
               value={datos.requestTypeCode}
@@ -21,7 +21,7 @@ const Step1 = ({ datos, handleChange,handleImageCedulaChange }) => {
             >
               <option value="V">V</option>
               <option value="E">E</option>
-            </select>
+            </select> */}
             <input
               type="text"
               name="cedula"
@@ -30,7 +30,7 @@ const Step1 = ({ datos, handleChange,handleImageCedulaChange }) => {
               placeholder="Cedula"
               required
             />
-          </div> */}
+          </div>
 
           <div className="container-input">
             <input
