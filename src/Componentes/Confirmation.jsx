@@ -19,33 +19,8 @@ const Confirmation = ({
   selectedCedulaImg,
   selectedImage
 }) => {
-  console.log(" cedula:", selectedCedulaImg);
-  console.log(" imagen ocr:", selectedImage);
-
   const tableRef = useRef();
 
-  useEffect(() => {
-    // Este efecto se ejecutará cada vez que editableData cambie
-    console.log(" Data2:", datos2);
-
-    const marca = datos2 ? datos2.marca : null;
-  }, [datos2]);
-
-  // useEffect(() => {
-  //   const sendEmail = async () => {
-  //     try {
-  //       const response = await axios.post("https://rcv.gocastgroup.com:3100/sendEmail", {
-  //         datos_correo: datos.correo,
-  //         // Otros datos que necesites enviar al servidor para el correo
-  //       });
-  //       console.log("Correo electrónico enviado correctamente:", response.data);
-  //     } catch (error) {
-  //       console.error("Error al enviar el correo electrónico:", error);
-  //     }
-  //   };
-
-  //   sendEmail();
-  // }, [datos.correo]);
 
   const postData = async () => {
     try {
@@ -146,7 +121,8 @@ const Confirmation = ({
         [`Cédula: ${datos.cedula}`],
         [`Fecha de nacimiento: ${datos.fnacimiento}`],
         [`Teléfono: ${datos.telefono}`],
-        [`Correo: ${datos.correo}`],
+        [`Correo: ${datos.correo}`],  
+        [`vigencia: ${vigencia}`],
       ],
       startY: 20, // Espaciado entre el título y la tabla
       theme: 'striped',
@@ -163,8 +139,7 @@ const Confirmation = ({
         [`Marca: ${datos2.marca}`],
         [`Modelo: ${datos2.modelo}`],
         [`Año: ${datos2.año}`],
-        [`Tipo: ${datos2.tipo}`],
-        [`Estilo: ${datos2.estilo}`],
+        [`Tipo: ${datos2.tipo}`]
       ],
       startY: doc.autoTable.previous.finalY + 10, // Iniciar la tabla después de la anterior
       theme: 'striped',
@@ -197,7 +172,6 @@ const Confirmation = ({
     downloadPDF();       // Llama a la función para descargar el PDF
   };
 
-  console.log("confirmacion datos 2", datos2);
 
   return (
     <div className="confirmation">

@@ -32,17 +32,13 @@ const Plans = ({ establishment }) => {
       }
     }
   
-    console.log("Precio total:", newTotalPrice);
+  
     setTotalPrice(newTotalPrice);
   };
 
   const handleBuyClick = (precio) => {
-    console.log("Precio servicio:", precio);
   };
 
-  // useEffect(() => {
-  //   console.log("Nombre del servicio extra:", selectedExtraService);
-  // }, [selectedExtraService]);
 
   const btnService = [
     {

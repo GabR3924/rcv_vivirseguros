@@ -35,7 +35,7 @@ const Footer = () => {
             href="https://backoffice-vivirseguros.vercel.app"
             style={{ color: "black", textDecoration: "none" }}
           >
-            Vivir Seguros Group
+            Vivir Seguros
           </a>
 
           <ul>

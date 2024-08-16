@@ -8,9 +8,6 @@ const Card = ({ title, precio, data, establishment, extraServicePrice, onBuyClic
 
   const handleBuyClick = () => {
     onBuyClick(precio);
-    console.log("Nombre del plan:", title);
-    console.log("Nombre del servicio extra:", extraServiceName);
-    // Redirigir al formulario con los datos del plan
     navigate(`/formulario/${establishment}?planPrice=${precio}&extraServicePrice=${extraServicePrice}&planName=${title}&extraServiceName=${extraServiceName}`);
   };
 

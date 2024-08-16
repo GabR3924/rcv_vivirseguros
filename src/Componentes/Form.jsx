@@ -62,16 +62,6 @@ const Form = ({ codigo, nombre }) => {
       return newDatos;
     });
   };
-
-  // const handleImageCedulaChange = (e) => {
-  //   const file = e.target.files[0];
-  //   if (file) { 
-  //     setDatos((prevDatos) => {
-  //       const newDatos = { ...prevDatos, imagen_cedula: file };
-  //       return newDatos;
-  //     });
-  //   }
-  // };
   
 
   const handleStep2Data = (data) => {
@@ -79,10 +69,11 @@ const Form = ({ codigo, nombre }) => {
     setDatos2({
       cedula:data.vehicleData.cedula,
       serial:data.vehicleData.serial,
-      nombre:data.vehicleData.nombre,
       placa:data.vehicleData.placa,
       marca:data.vehicleData.marca,
       año:data.vehicleData.año,
+      modelo:data.vehicleData.modelo,
+      tipo:data.vehicleData.tipo,
       imagen:data.image
     });
     };
@@ -142,7 +133,6 @@ const Form = ({ codigo, nombre }) => {
       return;
     }
 
-    console.log("Datos enviados:", datos, datos2, codigo);
     setStep(3);
   };
 

@@ -21,7 +21,6 @@ function App() {
     const codigo = params.get('codigo');
     const nombre = params.get('nombre');
 
-    console.log(codigo, nombre);
 
     if (codigo && nombre) {
       // Si se encuentran el código y el nombre en la URL, establecer el establecimiento
