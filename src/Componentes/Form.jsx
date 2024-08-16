@@ -19,7 +19,6 @@ const Form = ({ codigo, nombre }) => {
   const [selectedImage, setSelectedImage] = useState(null);
 
   const [datos, setDatos] = useState({
-    requestTypeCode: "V",
     cedula: "",
     nombre: "",
     apellido: "",
