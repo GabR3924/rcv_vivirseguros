@@ -12,6 +12,7 @@ import Confirmation from './Componentes/Confirmation';
 import Modal from './Modal';
 import Login from './Componentes/Login';
 
+//v.1 produccion
 function App() {
   const [establishment, setEstablishment] = useState(null);
 
