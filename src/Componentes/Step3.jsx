@@ -54,6 +54,7 @@ function Step3({
         cedula: cedula,
         telefono: telefono,
         Reference: referencia,
+        clienteNombre: VivirSeguros
       })
       .then((response) => {
         console.log("res api", response.data.message);
@@ -104,6 +105,7 @@ function Step3({
       fechExp: fechExp,
       tipTarjeta: tipTarjeta,
       identificador: identificadorValue,
+      clienteNombre: VivirSeguros
     };
 
     console.log("tarjeta", paymentData);
