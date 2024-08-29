@@ -45,6 +45,10 @@ function Step3({
   }, [totalBolivares]);
 
   const handleGuardarPago = () => {
+    console.log("correo", correo);
+    console.log("banco", selectedBanco);
+    console.log("referencia", referencia);
+    console.log("monto", monto);
 
     axios
       .post("https://apidev.gocastgroup.com/api/bnc/p2p.php", {
@@ -54,8 +58,10 @@ function Step3({
         cedula: cedula,
         telefono: telefono,
         Reference: referencia,
-        clienteNombre: "VivirSeguros"      })
+        clienteNombre: "VivirSeguros",
+       })
       .then((response) => {
+        console.log("respuesta", response.data);
         console.log("res api", response.data.message);
         // Verificar si la transacción fue exitosa
         if (response && response.data.status === "success") {
