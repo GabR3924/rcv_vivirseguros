@@ -54,8 +54,7 @@ function Step3({
         cedula: cedula,
         telefono: telefono,
         Reference: referencia,
-        clienteNombre: VivirSeguros
-      })
+        clienteNombre: "VivirSeguros"      })
       .then((response) => {
         console.log("res api", response.data.message);
         // Verificar si la transacción fue exitosa
