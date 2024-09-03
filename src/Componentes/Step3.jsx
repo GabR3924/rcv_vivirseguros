@@ -27,7 +27,7 @@ function Step3({
   const [tipCuenta, setTipCuenta] = useState("");
   const [afiliacion, setAfiliacion] = useState("");
   const [montoTarjeta, setMontoTarjeta] = useState("");
-  const [documento, setDocumento] = useState("");
+  const [documento, setDocumento] = useState("");e 
   const [nomTarjeta, setNomTarjeta] = useState("");
   const [numTarjeta, setNumTarjeta] = useState("");
   const [pin, setPin] = useState("");
@@ -127,7 +127,7 @@ function Step3({
           handlePaymentData({
             fecha: new Date(), // Aquí puedes obtener la fecha actual u otra fecha relevante
             referencia: response.data.Reference,
-            monto: montoTarjeta, // Aquí puedes pasar cualquier otro dato necesario
+            monto: montoTarjeta
           });
 
           setTarjetaResponse({
