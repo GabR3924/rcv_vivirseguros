@@ -1,11 +1,10 @@
 import "../CSS/Confirmation.css";
 import axios from "axios";
 import IMG from "../assets/logo1.png";
-import { FaWhatsapp } from "react-icons/fa";
+import { FaWhatsapp, FaPhoneAlt } from "react-icons/fa";
 import { BiLogoGmail } from "react-icons/bi";
-import { FaPhoneAlt } from "react-icons/fa";
 import { FaLocationDot } from "react-icons/fa6";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { jsPDF } from "jspdf";
 import "jspdf-autotable";
 
@@ -15,6 +14,7 @@ const Confirmation = ({
   paymentData,
   codigo,
   plan,
+  planId,
   extraPlan,
   selectedCedulaImg,
   selectedImage
@@ -22,98 +22,14 @@ const Confirmation = ({
   const tableRef = useRef();
 
 
-  const postData = async () => {
-    try {
-      // Crear una instancia de FormData
-      const formData = new FormData();
-
-      // Agregar los datos al FormData
-      formData.append("codigo", codigo);
-      formData.append("cedula_propietario", datos.cedula);
-      formData.append("nombre_propietario", datos.nombre);
-      formData.append("apellido_propietario", datos.apellido);
-      formData.append("fecha_nacimiento", datos.fnacimiento);
-      formData.append("genero", datos.genero);
-      formData.append("telefono", datos.telefono);
-      formData.append("correo", datos.correo);
-      formData.append("ciudad", datos.ciudad);
-      formData.append("estado", datos.estado);
-      formData.append("municipio", datos.municipio);
-      formData.append("direccion", datos.direccion);
-      formData.append("plans", plan);
-      formData.append("extra_plans", extraPlan);
-      
-      formData.append("paymentData_referencia", paymentData.referencia);
-      formData.append("paymentData_monto", paymentData.monto);
-      formData.append("paymentData_banco", paymentData.banco);
-     
-      formData.append("serial_vehiculo", datos2.serial);
-      formData.append("placa_vehiculo", datos2.placa);
-      formData.append("marca_vehiculo", datos2.marca);
-      formData.append("ano_vehiculo", datos2.año);
-      
-      formData.append("modelo", datos2.modelo);
-      formData.append("tipo", datos2.tipo);
-      formData.append("estilo", datos2.estilo);
-
-      // Agregar las imágenes al FormData
-      formData.append("imagen_cedula", selectedCedulaImg);
-      formData.append("imagen", selectedImage);
-      
-      const response = await axios.post("https://rcv.gocastgroup.com:2053/vivirseguros/intermediarios", formData, {
-          headers: {
-            'Content-Type': 'multipart/form-data'
-          }
-      }); 
-
-      console.log("Datos insertados correctamente:", response.data);
-    } catch (error) {
-      console.error("Error al insertar datos:", error);
-    }
+  const handleDownloadPDF = (e) => {
+    e.preventDefault();
+    downloadPDF();
   };
-
-  
-  const calcularVigencia = () => {
-    // Obtener la fecha actual
-    const fechaActual = new Date();
-  
-    // Formatear la fecha actual
-    const diaActual = String(fechaActual.getDate()).padStart(2, '0');
-    const mesActual = String(fechaActual.getMonth() + 1).padStart(2, '0'); // Los meses comienzan desde 0
-    const anioActual = fechaActual.getFullYear();
-  
-    // Calcular la fecha un año después
-    const fechaUnAnioDespues = new Date(fechaActual);
-    fechaUnAnioDespues.setFullYear(fechaUnAnioDespues.getFullYear() + 1);
-  
-    // Formatear la fecha un año después
-    const diaDespues = String(fechaUnAnioDespues.getDate()).padStart(2, '0');
-    const mesDespues = String(fechaUnAnioDespues.getMonth() + 1).padStart(2, '0');
-    const anioDespues = fechaUnAnioDespues.getFullYear();
-  
-    return `${diaActual}/${mesActual}/${anioActual} al ${diaDespues}/${mesDespues}/${anioDespues}`;
-  };
-  
-  const vigencia = calcularVigencia();
-
-  useEffect(() => {
-    // Llama a la función postData con los datos que deseas enviar
-    postData({ datos, datos2 })
-      .then((data) => {
-        console.log("Datos insertados correctamente:", data);
-      })
-      .catch((error) => {
-        console.error("Error al insertar datos:", error);
-      });
-  }, [datos, datos2]);
 
   const downloadPDF = () => {
     const doc = new jsPDF();
-  
-    // Título del documento
     doc.text("Confirmación de Información y Pago de Póliza", 10, 10);
-  
-    // Información del propietario
     doc.autoTable({
       head: [['Propietario']],
       body: [
@@ -124,13 +40,11 @@ const Confirmation = ({
         [`Correo: ${datos.correo}`],  
         [`vigencia: ${vigencia}`],
       ],
-      startY: 20, // Espaciado entre el título y la tabla
+      startY: 20,
       theme: 'striped',
       headStyles: { fillColor: [22, 160, 133] },
       styles: { fontSize: 10, cellPadding: 3, overflow: 'linebreak' },
     });
-  
-    // Información del vehículo
     doc.autoTable({
       head: [['Vehículo']],
       body: [
@@ -141,13 +55,11 @@ const Confirmation = ({
         [`Año: ${datos2.año}`],
         [`Tipo: ${datos2.tipo}`]
       ],
-      startY: doc.autoTable.previous.finalY + 10, // Iniciar la tabla después de la anterior
+      startY: doc.autoTable.previous.finalY + 10,
       theme: 'striped',
       headStyles: { fillColor: [22, 160, 133] },
       styles: { fontSize: 10, cellPadding: 3, overflow: 'linebreak' },
     });
-  
-    // Información del pago
     doc.autoTable({
       head: [['Pago']],
       body: [
@@ -156,23 +68,28 @@ const Confirmation = ({
         [`Banco: ${paymentData.banco}`],
         [`Fecha de Pago: ${paymentData.fecha}`],
       ],
-      startY: doc.autoTable.previous.finalY + 10, // Iniciar la tabla después de la anterior
+      startY: doc.autoTable.previous.finalY + 10,
       theme: 'striped',
       headStyles: { fillColor: [22, 160, 133] },
       styles: { fontSize: 10, cellPadding: 3, overflow: 'linebreak' },
     });
-  
-    // Guardar el PDF
     doc.save("confirmacion.pdf");
   };
-  
 
-  const handleDownloadPDF = (e) => {
-    e.preventDefault();  // Previene cualquier comportamiento no deseado como la redirección
-    downloadPDF();       // Llama a la función para descargar el PDF
+  const calcularVigencia = () => {
+    const fechaActual = new Date();
+    const diaActual = String(fechaActual.getDate()).padStart(2, '0');
+    const mesActual = String(fechaActual.getMonth() + 1).padStart(2, '0');
+    const anioActual = fechaActual.getFullYear();
+    const fechaUnAnioDespues = new Date(fechaActual);
+    fechaUnAnioDespues.setFullYear(fechaUnAnioDespues.getFullYear() + 1);
+    const diaDespues = String(fechaUnAnioDespues.getDate()).padStart(2, '0');
+    const mesDespues = String(fechaUnAnioDespues.getMonth() + 1).padStart(2, '0');
+    const anioDespues = fechaUnAnioDespues.getFullYear();
+    return `${diaActual}/${mesActual}/${anioActual} al ${diaDespues}/${mesDespues}/${anioDespues}`;
   };
 
-
+  const vigencia = calcularVigencia();
   return (
     <div className="confirmation">
       <p style={{ fontWeight: "bold" }}>
