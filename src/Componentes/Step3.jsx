@@ -97,8 +97,8 @@ function Step3({
   };
 
   const handleGuardarTarjeta = () => {
-    const afiliacionValue = "860112192"; // Valor predeterminado de afiliación
-    const identificadorValue = "23000760"; // Valor predeterminado de afiliación
+    const afiliacionValue = "860954354"; // Valor predeterminado de afiliación
+    const identificadorValue = "12168728"; // Valor predeterminado de afiliación
 
     var paymentData = {
       tipCuenta: tipCuenta,

@@ -21,15 +21,16 @@ const Confirmation = ({
 }) => {
   const tableRef = useRef();
 
-
-  const handleDownloadPDF = (e) => {
+  const handleDownloadPDF = async (e) => {
     e.preventDefault();
-    downloadPDF();
+    const pdfBlob = await createPDFBlob();
+    sendPDF(pdfBlob);
   };
 
-  const downloadPDF = () => {
+  const createPDFBlob = () => {
     const doc = new jsPDF();
     doc.text("Confirmación de Información y Pago de Póliza", 10, 10);
+    
     doc.autoTable({
       head: [['Propietario']],
       body: [
@@ -37,14 +38,15 @@ const Confirmation = ({
         [`Cédula: ${datos.cedula}`],
         [`Fecha de nacimiento: ${datos.fnacimiento}`],
         [`Teléfono: ${datos.telefono}`],
-        [`Correo: ${datos.correo}`],  
-        [`vigencia: ${vigencia}`],
+        [`Correo: ${datos.correo}`],
+        [`Vigencia: ${vigencia}`],
       ],
       startY: 20,
       theme: 'striped',
       headStyles: { fillColor: [22, 160, 133] },
       styles: { fontSize: 10, cellPadding: 3, overflow: 'linebreak' },
     });
+    
     doc.autoTable({
       head: [['Vehículo']],
       body: [
@@ -60,6 +62,7 @@ const Confirmation = ({
       headStyles: { fillColor: [22, 160, 133] },
       styles: { fontSize: 10, cellPadding: 3, overflow: 'linebreak' },
     });
+    
     doc.autoTable({
       head: [['Pago']],
       body: [
@@ -73,7 +76,33 @@ const Confirmation = ({
       headStyles: { fillColor: [22, 160, 133] },
       styles: { fontSize: 10, cellPadding: 3, overflow: 'linebreak' },
     });
-    doc.save("confirmacion.pdf");
+    
+    // Convert PDF to Blob
+    return new Promise((resolve) => {
+      doc.output('blob', (blob) => {
+        resolve(blob);
+      });
+    });
+  };
+
+  const sendPDF = async (pdfBlob) => {
+    const formData = new FormData();
+    formData.append("pdf", pdfBlob, "confirmacion.pdf");
+
+    try {
+      const response = await axios.post(
+        "https://apidev.gocastgroup.com/api/mail.php",
+        formData,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        }
+      );
+      console.log("PDF enviado con éxito:", response.data);
+    } catch (error) {
+      console.error("Error al enviar el PDF:", error);
+    }
   };
 
   const calcularVigencia = () => {
@@ -90,6 +119,7 @@ const Confirmation = ({
   };
 
   const vigencia = calcularVigencia();
+  
   return (
     <div className="confirmation">
       <p style={{ fontWeight: "bold" }}>
