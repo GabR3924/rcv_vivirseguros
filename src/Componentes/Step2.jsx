@@ -1,16 +1,23 @@
 import axios from 'axios';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+
 
 function Step2({ handleStep2Data, handleImageChange, selectedImage }) {
   const [isLoading, setIsLoading] = useState(false);
   const [vehicleInfo, setVehicleInfo] = useState(null);
   const [modalIsOpen, setModalIsOpen] = useState(false);
 
+  useEffect(() => {
+    if (selectedImage) {
+      console.log('Imagen seleccionada:', selectedImage);
+    }
+  }, [selectedImage]); // Se ejecuta cada vez que selectedImage cambia
 
 
   const handleProcessImage = async () => {
     setIsLoading(true);
     const formData = new FormData();
+    
     formData.append('image', selectedImage);
 //prueba
     try {
