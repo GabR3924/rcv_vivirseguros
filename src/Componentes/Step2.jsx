@@ -25,7 +25,8 @@ function Step2({ handleStep2Data, handleImageChange, selectedImage }) {
         headers: {
           'Content-Type': 'multipart/form-data'
         }
-      });
+      }); 
+      console.log('data:', response)
       setVehicleInfo(response.data);
       setModalIsOpen(true);
 
