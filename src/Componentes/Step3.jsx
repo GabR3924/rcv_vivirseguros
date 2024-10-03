@@ -159,7 +159,7 @@ function Step3({
       })
       .catch((error) => {
         // console.error("Error al obtener la tasa del día:", error);
-        setPrecioBolivares("36.56");
+        setPrecioBolivares("36.98");
       });
   }, []);
 
@@ -187,11 +187,11 @@ function Step3({
         <h3>Plan seleccionado:</h3>
 
         <p>
-          <span>{planName}</span>: <span>{planPrice}</span>
+          <span>{planName}</span>: <span>{planPrice}$US</span>
         </p>
 
         <p>
-          <span>{extraServiceName}</span>: <span>{extraServicePrice}$</span>
+          <span>{extraServiceName}</span>: <span>{extraServicePrice}$US</span>
         </p>
 
         <p>

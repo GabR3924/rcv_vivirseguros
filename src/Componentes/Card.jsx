@@ -14,7 +14,7 @@ const Card = ({ title, precio, data, establishment, extraServicePrice, onBuyClic
   return (
     <div id="card">
       <h2>{title}</h2>
-      <h1>{precio}</h1>
+      <h1>{precio}$US</h1>
       <ul>
         {Object.keys(data).map((key, index) => (
           <li key={index}>
