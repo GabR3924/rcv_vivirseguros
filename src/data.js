@@ -6,8 +6,8 @@ const cards = [
     data: {
       uno: "Daños a cosas (Segun Ley)",
       dos: "Daños a Personas (Segun Ley)",
-      tres: "Exceso de Limite (250,00)",
-      cuatro: "Defensa Penal (250,00)",
+      tres: "Exceso de Limite (250,00$US)",
+      cuatro: "Defensa Penal (250,00$US)",
       cinco: "Muerte Accideltal (Dependiendo de la cantidad de puestos)",
       seis: "Invalidez Permanente (Dependiendo de la cantidad de puestos)",
       siete: "Gastos Medicos (Dependiendo de la cantidad de puestos)",
@@ -28,8 +28,8 @@ const cards = [
     data: {
       uno: "Daños a cosas (Segun Ley)",
       dos: "Daños a Personas (Segun Ley)",
-      tres: "Exceso de Limite (500 / 800)",
-      cuatro: "Defensa Penal (500 / 800)",
+      tres: "Exceso de Limite (500$US / 800$US)",
+      cuatro: "Defensa Penal (500$US / 800$US)",
       cinco: "Muerte Accideltal (Dependiendo de la cantidad de puestos)",
       seis: "Invalidez Permanente (Dependiendo de la cantidad de puestos)",
       siete: "Gastos Medicos (Dependiendo de la cantidad de puestos)",
@@ -50,8 +50,8 @@ const cards = [
     data: {
       uno: "Daños a cosas (Segun Ley)",
       dos: "Daños a Personas (Segun Ley)",
-      tres: "Exceso de Limite (2.000,00)",
-      cuatro: "Defensa Penal (2.000,00)",
+      tres: "Exceso de Limite (2.000,00$US)",
+      cuatro: "Defensa Penal (2.000,00$US)",
       cinco: "Muerte Accideltal (Dependiendo de la cantidad de puestos)",
       seis: "Invalidez Permanente (Dependiendo de la cantidad de puestos)",
       siete: "Gastos Medicos (Dependiendo de la cantidad de puestos)",
