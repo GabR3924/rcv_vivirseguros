@@ -21,7 +21,7 @@ function Step2({ handleStep2Data, handleImageChange, selectedImage }) {
     formData.append('image', selectedImage);
 //prueba
     try {
-      const response = await axios.post('https://rcv.gocastgroup.com:2053/procesar-imagen', formData, {
+      const response = await axios.post('https://rcv.gocastgroup.com:2053/data/procesar-imagen', formData, {
         headers: {
           'Content-Type': 'multipart/form-data'
         }
